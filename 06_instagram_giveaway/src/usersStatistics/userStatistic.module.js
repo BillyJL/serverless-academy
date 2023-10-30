@@ -6,10 +6,15 @@ export class UserStatisticModule {
         const dataArray = await getDataArray();
 
         const userStatistic = new UserStatisticController(dataArray);
+
+        const startTime = Date.now();
     
         const uniqueUsers = userStatistic.countUniqueUsers();
         const usersInAllFiles = userStatistic.countUsersInAllFiles();
         const usersInAtLeastTenFiles = userStatistic.countUsersInAtLeastTenFiles();
+    
+        const endTime = Date.now();
+        const elapsedTime = endTime - startTime;
     
         console.log(`Unique Users: ${uniqueUsers}`);
         console.log(`Users in All Files: ${usersInAllFiles}`);
